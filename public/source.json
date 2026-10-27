@@ -1,0 +1,6 @@
+{
+  "protocol": "recuse-1",
+  "sha256": "d84317e626289b2471cb875643d16d5fbe7eb981ac877580559ccb91d40c3ad7",
+  "chainId": 61999,
+  "rpc": "https://studio.genlayer.com/api"
+}
