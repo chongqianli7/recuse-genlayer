@@ -1,0 +1,67 @@
+{
+  "mode": "CHAIN_READBACK",
+  "network": 61999,
+  "contract": "0xB824FC0C81fc4810780f1A4f16C3b891A741A237",
+  "record": {
+    "declarations": {
+      "0x4544ea7bbcdd442b2eaf0dd4017b60438fd8f9f5": "I am the managing director and a shareholder of Cedar Workshop Ltd, the proposed paid operator. I would benefit financially from this appointment.",
+      "0xca9f1ac8e9c16db36abc1573b152474f9908d4a8": "I have no financial, employment, ownership, close family or competing business interests related to Cedar Workshop Ltd or this appointment.",
+      "0xe1630ce20706f65ca70ad3e3c46c2f14a4c0097f": "I have no financial, employment, ownership, close family or competing business interests related to Cedar Workshop Ltd or this appointment."
+    },
+    "eligible": [
+      "0xca9f1ac8e9c16db36abc1573b152474f9908d4a8",
+      "0xe1630ce20706f65ca70ad3e3c46c2f14a4c0097f"
+    ],
+    "findings": [
+      {
+        "declaration_quote": "I am the managing director and a shareholder of Cedar Workshop Ltd, the proposed paid operator. I would benefit financially from this appointment.",
+        "kind": "DIRECT",
+        "member": "0x4544ea7bbcdd442b2eaf0dd4017b60438fd8f9f5",
+        "proposal_quote": "Appoint Cedar Workshop Ltd as the paid operator of the community maker hall for one year.",
+        "reason": "The member is an officer and shareholder of the named proposed paid operator and explicitly states they would benefit financially from this appointment."
+      },
+      {
+        "declaration_quote": "I have no financial, employment, ownership, close family or competing business interests related to Cedar Workshop Ltd or this appointment.",
+        "kind": "NONE",
+        "member": "0xca9f1ac8e9c16db36abc1573b152474f9908d4a8",
+        "proposal_quote": "Appoint Cedar Workshop Ltd as the paid operator of the community maker hall for one year.",
+        "reason": "The member explicitly denies relevant financial, employment, ownership, family, and competing business interests, with no contradictory disclosed relationship."
+      },
+      {
+        "declaration_quote": "I have no financial, employment, ownership, close family or competing business interests related to Cedar Workshop Ltd or this appointment.",
+        "kind": "NONE",
+        "member": "0xe1630ce20706f65ca70ad3e3c46c2f14a4c0097f",
+        "proposal_quote": "Appoint Cedar Workshop Ltd as the paid operator of the community maker hall for one year.",
+        "reason": "The member explicitly denies relevant financial, employment, ownership, family, and competing business interests, with no contradictory disclosed relationship."
+      }
+    ],
+    "id": "hall-1793126180689",
+    "members": [
+      "0x4544ea7bbcdd442b2eaf0dd4017b60438fd8f9f5",
+      "0xca9f1ac8e9c16db36abc1573b152474f9908d4a8",
+      "0xe1630ce20706f65ca70ad3e3c46c2f14a4c0097f"
+    ],
+    "owner": "0x4544ea7bbcdd442b2eaf0dd4017b60438fd8f9f5",
+    "proposal": "Appoint Cedar Workshop Ltd as the paid operator of the community maker hall for one year. The committee approves the service appointment only; no funds are transferred by this vote.",
+    "protocol": "recuse-1",
+    "status": "PASSED",
+    "tally": {
+      "abstain": 0,
+      "decision": "PASSED",
+      "eligible": 2,
+      "no": 0,
+      "quorum": 2,
+      "ready": true,
+      "remaining": 0,
+      "yes": 2,
+      "yes_required": 2
+    },
+    "title": "Community workshop operator appointment",
+    "votes": {
+      "0xca9f1ac8e9c16db36abc1573b152474f9908d4a8": "YES",
+      "0xe1630ce20706f65ca70ad3e3c46c2f14a4c0097f": "YES"
+    }
+  },
+  "receipt": null,
+  "exportedAt": "2026-10-27T18:46:49.721Z"
+}
