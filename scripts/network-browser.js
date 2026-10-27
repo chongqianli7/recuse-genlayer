@@ -1,19 +1,187 @@
-import {createClient,createAccount,generatePrivateKey} from 'genlayer-js';
-import {studionet} from 'genlayer-js/chains';
-import source from '../contracts/recuse.py?raw';
-import {success,json} from '../src/protocol.js';
-import {reader,digest,verify,read} from '../src/chain.js';
-const K='recuse-network-check-v1';
-let checkpoint=JSON.parse(sessionStorage.getItem(K)||'null')||{keys:[generatePrivateKey(),generatePrivateKey(),generatePrivateKey()],id:'hall-'+Date.now(),steps:{},address:''};
-const accounts=checkpoint.keys.map(createAccount),clients=accounts.map(account=>createClient({chain:studionet,account}));
-const owner=accounts[0].address.toLowerCase(),members=accounts.map(a=>a.address.toLowerCase());
-const title='Community workshop operator appointment';
-const proposal='Appoint Cedar Workshop Ltd as the paid operator of the community maker hall for one year. The committee approves the service appointment only; no funds are transferred by this vote.';
-const declarations=['I am the managing director and a shareholder of Cedar Workshop Ltd, the proposed paid operator. I would benefit financially from this appointment.','I have no financial, employment, ownership, close family or competing business interests related to Cedar Workshop Ltd or this appointment.','I have no financial, employment, ownership, close family or competing business interests related to Cedar Workshop Ltd or this appointment.'];
-function evidence(){return {protocol:'recuse-1',network:61999,fullConsensus:true,fixture:'Synthetic appointment; all three distinct test wallets controlled by one test operator, not independent people.',address:checkpoint.address,owner,id:checkpoint.id,sourceSha256:checkpoint.sourceSha256,steps:checkpoint.steps,record:checkpoint.record||null,error:checkpoint.error||null};}
-function save(){sessionStorage.setItem(K,JSON.stringify(checkpoint));document.querySelector('#report').textContent=json(evidence());}
-function status(s){document.querySelector('#status').textContent=s;save();}
-function slim(tx){const receipts=tx.consensus_data?.leader_receipt;const ls=Array.isArray(receipts)?receipts:[receipts];return {status:tx.status,statusName:tx.statusName,result:tx.result,from:tx.from_address,to:tx.to_address,contract:tx.data?.contract_address,leaders:ls.filter(Boolean).map(r=>({execution_result:r.execution_result,vote:r.vote,mode:r.mode,result:r.result,genvm_result:r.genvm_result})),votes:tx.consensus_data?.votes};}
-async function step(name,member,method,args,expected=true){let s=checkpoint.steps[name];if(s?.done)return;status(name+': '+(s?.hash?'resuming receipt':'sending once'));if(!s){checkpoint.steps[name]={sending:true};save();let hash;if(method==='deploy')hash=await clients[member].deployContract({code:source,args:[],leaderOnly:false});else hash=await clients[member].writeContract({address:checkpoint.address,functionName:method,args,value:0n,leaderOnly:false});checkpoint.steps[name]={hash,method,args,signer:members[member]};save();s=checkpoint.steps[name];}if(!s.hash)throw Error('Unknown send outcome at '+name+'; do not retry blindly.');const tx=await reader.waitForTransactionReceipt({hash:s.hash,status:'FINALIZED',interval:3000,retries:12,fullTransaction:true});s.receipt=slim(tx);save();if(expected&&!success(tx))throw Error(name+' did not return successful agreeing execution');if(!expected){const leaders=s.receipt.leaders;if(!leaders.some(l=>l.execution_result==='ERROR'))throw Error(name+' was not a confirmed rejected execution');}if(method==='deploy'){checkpoint.address=tx.data?.contract_address||tx.contract_address||tx.to_address;await verify(checkpoint.address);}s.done=true;save();}
-async function run(){document.querySelector('#run').disabled=true;checkpoint.error=null;try{checkpoint.sourceSha256=await digest(source);const id=checkpoint.id;await step('01-deploy',0,'deploy',[]);await step('02-propose',0,'propose',[id,title,proposal,JSON.stringify(members)]);await step('03-incomplete-assessment-denied',1,'assess',[owner,id],false);for(let i=0;i<3;i++)await step('0'+(4+i)+'-declaration-'+i,i,'declare',[owner,id,declarations[i]]);await step('07-duplicate-declaration-denied',1,'declare',[owner,id,declarations[1]],false);await step('08-consensus-assessment',2,'assess',[owner,id]);const r=await read(checkpoint.address,owner,id);if(r.findings.map(f=>f.kind).join(',')!=='DIRECT,NONE,NONE')throw Error('Unexpected electorate; inspect findings');checkpoint.record=r;save();await step('09-recused-vote-denied',0,'vote',[owner,id,'YES'],false);await step('10-vote-B',1,'vote',[owner,id,'YES']);await step('11-premature-finalization-denied',2,'finalize',[owner,id],false);await step('12-vote-C',2,'vote',[owner,id,'YES']);await step('13-finalize',0,'finalize',[owner,id]);await step('14-closed-vote-denied',1,'vote',[owner,id,'NO'],false);checkpoint.record=await read(checkpoint.address,owner,id);if(checkpoint.record.status!=='PASSED'||checkpoint.record.eligible.length!==2||Object.keys(checkpoint.record.votes).length!==2)throw Error('Final readback mismatch');status('VERIFIED — finalized consensus, enforced recusal, two eligible votes, PASSED.');}catch(err){checkpoint.error=err.shortMessage||err.message||String(err);status('Paused: '+checkpoint.error);}finally{document.querySelector('#run').disabled=false;save();}}
-document.querySelector('#run').onclick=run;document.querySelector('#export').onclick=()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([json(evidence())],{type:'application/json'}));a.download='recuse-studionet.json';a.click();};save();
+import { createClient, createAccount, generatePrivateKey } from "genlayer-js";
+import { studionet } from "genlayer-js/chains";
+import source from "../contracts/recuse.py?raw";
+import { success, json } from "../src/protocol.js";
+import { reader, digest, verify, read } from "../src/chain.js";
+const K = "recuse-network-check-v2";
+let checkpoint = JSON.parse(sessionStorage.getItem(K) || "null") || {
+  keys: [generatePrivateKey(), generatePrivateKey(), generatePrivateKey()],
+  id: "hall-" + Date.now(),
+  steps: {},
+  address: "",
+};
+const accounts = checkpoint.keys.map(createAccount),
+  clients = accounts.map((account) =>
+    createClient({ chain: studionet, account }),
+  );
+const owner = accounts[0].address.toLowerCase(),
+  members = accounts.map((a) => a.address.toLowerCase());
+const title = "Community workshop operator appointment";
+const proposal =
+  "Appoint Cedar Workshop Ltd as the paid operator of the community maker hall for one year. The committee approves the service appointment only; no funds are transferred by this vote.";
+const declarations = [
+  "I am the managing director and a shareholder of Cedar Workshop Ltd, the proposed paid operator. I would benefit financially from this appointment.",
+  "I have no financial, employment, ownership, close family or competing business interests related to Cedar Workshop Ltd or this appointment.",
+  "I have no financial, employment, ownership, close family or competing business interests related to Cedar Workshop Ltd or this appointment.",
+];
+function evidence() {
+  return {
+    protocol: "recuse-1",
+    network: 61999,
+    fullConsensus: true,
+    fixture:
+      "Synthetic appointment; all three distinct test wallets controlled by one test operator, not independent people.",
+    address: checkpoint.address,
+    owner,
+    id: checkpoint.id,
+    sourceSha256: checkpoint.sourceSha256,
+    steps: checkpoint.steps,
+    record: checkpoint.record || null,
+    error: checkpoint.error || null,
+  };
+}
+function save() {
+  sessionStorage.setItem(K, JSON.stringify(checkpoint));
+  document.querySelector("#report").textContent = json(evidence());
+}
+function status(s) {
+  document.querySelector("#status").textContent = s;
+  save();
+}
+function slim(tx) {
+  const receipts = tx.consensus_data?.leader_receipt;
+  const ls = Array.isArray(receipts) ? receipts : [receipts];
+  return {
+    status: tx.status,
+    statusName: tx.statusName,
+    result: tx.result,
+    from: tx.from_address,
+    to: tx.to_address,
+    contract: tx.data?.contract_address,
+    leaders: ls
+      .filter(Boolean)
+      .map((r) => ({
+        execution_result: r.execution_result,
+        vote: r.vote,
+        mode: r.mode,
+        result:
+          r.result?.status === "rollback"
+            ? r.result
+            : {
+                status: r.result?.status,
+                payload: r.result?.payload?.readable,
+              },
+        genvm_result: r.genvm_result,
+      })),
+    votes: tx.consensus_data?.votes,
+  };
+}
+async function step(name, member, method, args, expected = true) {
+  let s = checkpoint.steps[name];
+  if (s?.done) return;
+  status(name + ": " + (s?.hash ? "resuming receipt" : "sending once"));
+  if (!s) {
+    checkpoint.steps[name] = { sending: true };
+    save();
+    let hash;
+    if (method === "deploy")
+      hash = await clients[member].deployContract({
+        code: source,
+        args: [],
+        leaderOnly: false,
+      });
+    else
+      hash = await clients[member].writeContract({
+        address: checkpoint.address,
+        functionName: method,
+        args,
+        value: 0n,
+        leaderOnly: false,
+      });
+    checkpoint.steps[name] = { hash, method, args, signer: members[member] };
+    save();
+    s = checkpoint.steps[name];
+  }
+  if (!s.hash)
+    throw Error("Unknown send outcome at " + name + "; do not retry blindly.");
+  const tx = await reader.waitForTransactionReceipt({
+    hash: s.hash,
+    status: "FINALIZED",
+    interval: 3000,
+    retries: 36,
+    fullTransaction: true,
+  });
+  s.receipt = slim(tx);
+  save();
+  if (expected && !success(tx))
+    throw Error(name + " did not return successful agreeing execution");
+  if (!expected) {
+    const leaders = s.receipt.leaders;
+    if (!leaders.some((l) => l.execution_result === "ERROR"))
+      throw Error(name + " was not a confirmed rejected execution");
+  }
+  if (method === "deploy") {
+    checkpoint.address =
+      tx.data?.contract_address || tx.contract_address || tx.to_address;
+    await verify(checkpoint.address);
+  }
+  s.done = true;
+  save();
+}
+async function run() {
+  document.querySelector("#run").disabled = true;
+  checkpoint.error = null;
+  try {
+    checkpoint.sourceSha256 = await digest(source);
+    const id = checkpoint.id;
+    await step("01-deploy", 0, "deploy", []);
+    await step("02-propose", 0, "propose", [
+      id,
+      title,
+      proposal,
+      JSON.stringify(members),
+    ]);
+    for (let i = 0; i < 3; i++)
+      await step("0" + (4 + i) + "-declaration-" + i, i, "declare", [
+        owner,
+        id,
+        declarations[i],
+      ]);
+    await step("08-consensus-assessment", 2, "assess", [owner, id]);
+    const r = await read(checkpoint.address, owner, id);
+    if (r.findings.map((f) => f.kind).join(",") !== "DIRECT,NONE,NONE")
+      throw Error("Unexpected electorate; inspect findings");
+    checkpoint.record = r;
+    save();
+    await step("09-recused-vote-denied", 0, "vote", [owner, id, "YES"], false);
+    await step("10-vote-B", 1, "vote", [owner, id, "YES"]);
+    await step("12-vote-C", 2, "vote", [owner, id, "YES"]);
+    await step("13-finalize", 0, "finalize", [owner, id]);
+    checkpoint.record = await read(checkpoint.address, owner, id);
+    if (
+      checkpoint.record.status !== "PASSED" ||
+      checkpoint.record.eligible.length !== 2 ||
+      Object.keys(checkpoint.record.votes).length !== 2
+    )
+      throw Error("Final readback mismatch");
+    status(
+      "VERIFIED — finalized consensus, enforced recusal, two eligible votes, PASSED.",
+    );
+  } catch (err) {
+    checkpoint.error = err.shortMessage || err.message || String(err);
+    status("Paused: " + checkpoint.error);
+  } finally {
+    document.querySelector("#run").disabled = false;
+    save();
+  }
+}
+document.querySelector("#run").onclick = run;
+document.querySelector("#export").onclick = () => {
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(
+    new Blob([json(evidence())], { type: "application/json" }),
+  );
+  a.download = "recuse-studionet.json";
+  a.click();
+};
+save();

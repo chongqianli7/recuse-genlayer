@@ -1,5 +1,7 @@
 # Recuse
 
+[Open the committee desk](https://chongqianli7.github.io/recuse-genlayer/) · [Contract](https://explorer-studio.genlayer.com/address/0xB824FC0C81fc4810780f1A4f16C3b891A741A237) · [Network evidence](evidence/studionet.json)
+
 A committee voting desk where signed interest disclosures determine who may vote on a specific proposal. GenLayer validators independently assess each member's declared relationship. The contract excludes conflicts and uncertainty, freezes the electorate, and enforces participation and approval thresholds.
 
 ## Use the desk
@@ -27,6 +29,8 @@ Signed declarations are the authoritative inputs for this bounded workflow. They
 A pending intent is stored before requesting a wallet signature; its hash is saved immediately after submission. New writes remain blocked until it is resolved. **Resume tracking** reads the existing transaction. It does not resend. If a wallet request returned no hash, copy the exact hash from wallet activity before resuming. Explicit signature rejection releases the intent; an unknown submission outcome keeps it locked.
 
 Successful completion requires FINALIZED, MAJORITY_AGREE, successful leader execution, a receipt matching the sender/target/method/arguments, and chain state readback. Reloads and timeouts retain the pending request. Refresh the record after other members act. Exports marked CHAIN_READBACK contain state read from the selected chain; a receipt is included only if loaded in the current session.
+
+See [MECHANISM.md](MECHANISM.md) for the API, bounds, state transitions and decision arithmetic.
 
 ## Run locally
 
@@ -63,3 +67,9 @@ The static output is `dist/`; relative paths support subdirectory hosting. No pa
 - `scripts/network-browser.js` — resumable Stable Studionet verification.
 
 MIT licensed.
+
+## Published example
+
+The configured Stable Studionet contract is `0xB824FC0C81fc4810780f1A4f16C3b891A741A237`. Select **Live on GenLayer → Read published example** to read proposal `hall-1793126180689` without a wallet. The exact deployed source is verified before reading.
+
+The recorded run contains ten finalized transactions: deployment, proposal creation, three separately signed declarations, a successful consensus assessment, one rejected recused-member vote, two eligible YES votes and finalization to PASSED. All three test wallets were controlled by one operator; the company and appointment are synthetic. This demonstrates address-level permission enforcement, not independent real-world identities. See [VALIDATION.md](VALIDATION.md).

@@ -1,0 +1,11 @@
+{
+  "address": "0xB824FC0C81fc4810780f1A4f16C3b891A741A237",
+  "owner": "0x4544ea7bbcdd442b2eaf0dd4017b60438fd8f9f5",
+  "id": "hall-1793126180689",
+  "sourceSha256": "595ab0688d406adaed339de3eb1b781300e6f35237259126fdd6188870e36f62",
+  "chainId": 61999,
+  "rpc": "https://studio.genlayer.com/api",
+  "deploymentTx": "0x6136778d1b14f40100449282d94fc654203a15aefdcccb64928642737d316597",
+  "assessmentTx": "0x3c8742be1fb905e48133d168b08bdfb767b621317455da744db11da8506429de",
+  "finalizationTx": "0xe97760a2cf6494153a354085b5cb95bb041e4fb6bca2f65b3ac8327734b4a473"
+}

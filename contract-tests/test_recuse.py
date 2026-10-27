@@ -63,14 +63,24 @@ class Tests(unittest.TestCase):
     sender.sender_address=C;self.r.vote(A,'case','YES');self.r.finalize(A,'case');self.assertEqual(self.load()['status'],'REJECTED')
  def test_validator_rejects_non_return_and_malformed_output(self):
     self.assess();self.assertFalse(last_validator(None));self.assertFalse(last_validator(Return([])))
+ def test_result_transport_normalizes_object_and_tuple(self):
+    self.assertEqual(c.assessment(json.dumps({'findings':matrix()}),P,[{'member':m,'text':v} for m,v in zip([A,B,C],S)]),matrix())
+    self.assertEqual(c.assessment(tuple(matrix()),P,[{'member':m,'text':v} for m,v in zip([A,B,C],S)]),matrix())
  def test_members_invalid_duplicate_zero_and_bounds(self):
     for members in [[A,A,B],[A,B],['0x'+'0'*40,B,C]]:
       with self.assertRaises(Error):self.r.propose('bad','Title',P,json.dumps(members))
- def test_tally_matches_model_across_vote_combinations(self):
+ def test_decisive_results_cannot_be_flipped_by_remaining_votes(self):
     import itertools
     for n in range(2,8):
       members=[str(i) for i in range(n)]
       for choices in itertools.product(['YES','NO','ABSTAIN',''],repeat=n):
-        votes={m:v for m,v in zip(members,choices) if v};r=c.outcome(dict(eligible=members,votes=votes));yes=choices.count('YES');remaining=choices.count('');ready=len(votes)>=(2*n+2)//3 and (yes>=n//2+1 or yes+remaining<n//2+1)
-        self.assertEqual(r['ready'],ready)
+        votes={m:v for m,v in zip(members,choices) if v}
+        result=c.outcome(dict(eligible=members,votes=votes))
+        if not result['ready']:continue
+        self.assertGreaterEqual(len(votes),result['quorum'])
+        missing=[m for m in members if m not in votes]
+        for tail in itertools.product(['YES','NO','ABSTAIN'],repeat=len(missing)):
+          completed={**votes,**dict(zip(missing,tail))}
+          passes=2*sum(v=='YES' for v in completed.values())>n
+          self.assertEqual(result['decision']=='PASSED',passes)
 if __name__=='__main__':unittest.main()

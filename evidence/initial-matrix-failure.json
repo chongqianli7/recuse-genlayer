@@ -1,0 +1,375 @@
+{
+  "protocol": "recuse-1",
+  "network": 61999,
+  "fullConsensus": true,
+  "fixture": "Synthetic appointment; all three distinct test wallets controlled by one test operator, not independent people.",
+  "address": "0x73130Df6Ee75273e0B3e7A2B59cE0950B18aF8DD",
+  "owner": "0x63adea93f644c08dde9694ddd3e841f2ff696daf",
+  "id": "hall-1793125584561",
+  "sourceSha256": "d84317e626289b2471cb875643d16d5fbe7eb981ac877580559ccb91d40c3ad7",
+  "steps": {
+    "01-deploy": {
+      "hash": "0x65d8354fac42c66c1b6998231398f033bd13afd766bda4bd497afed030022be3",
+      "method": "deploy",
+      "args": [],
+      "signer": "0x63adea93f644c08dde9694ddd3e841f2ff696daf",
+      "receipt": {
+        "status": 7,
+        "statusName": "FINALIZED",
+        "result": 6,
+        "from": "0x63aDEA93f644c08dDE9694DdD3E841F2Ff696dAF",
+        "to": "0x73130Df6Ee75273e0B3e7A2B59cE0950B18aF8DD",
+        "contract": "0x73130Df6Ee75273e0B3e7A2B59cE0950B18aF8DD",
+        "leaders": [
+          {
+            "execution_result": "SUCCESS",
+            "vote": null,
+            "mode": "leader",
+            "result": {
+              "status": "return",
+              "payload": "null"
+            }
+          },
+          {
+            "execution_result": "SUCCESS",
+            "vote": "agree",
+            "mode": "validator",
+            "result": {
+              "status": "return",
+              "payload": "null"
+            }
+          }
+        ],
+        "votes": {
+          "0x045291B293B9D68969c18B6637A8258038cf787A": "agree",
+          "0x4619C8420D50c9dE477DB2CBb7b4863A041688CB": "agree",
+          "0x5847AF34a4e5bA96490f8c883598f68EC9B0B907": "agree",
+          "0x5e84e17266a193077728229751aC8A1dD24be146": "idle",
+          "0x63d72fE364368491E62a42B9C73c317Ce1ca8434": "idle"
+        }
+      },
+      "done": true
+    },
+    "02-propose": {
+      "hash": "0x57d281dd1c2bbb5a82f719b53f0b8542184323be79014515e290965d4377a131",
+      "method": "propose",
+      "args": [
+        "hall-1793125584561",
+        "Community workshop operator appointment",
+        "Appoint Cedar Workshop Ltd as the paid operator of the community maker hall for one year. The committee approves the service appointment only; no funds are transferred by this vote.",
+        "[\"0x63adea93f644c08dde9694ddd3e841f2ff696daf\",\"0x0655fbeb156877758da61d4972ff074185738e41\",\"0x0195d6c4009fdfa7e9bcfb8d22a59e10944ca07e\"]"
+      ],
+      "signer": "0x63adea93f644c08dde9694ddd3e841f2ff696daf",
+      "receipt": {
+        "status": 7,
+        "statusName": "FINALIZED",
+        "result": 6,
+        "from": "0x63aDEA93f644c08dDE9694DdD3E841F2Ff696dAF",
+        "to": "0x73130Df6Ee75273e0B3e7A2B59cE0950B18aF8DD",
+        "leaders": [
+          {
+            "execution_result": "SUCCESS",
+            "vote": null,
+            "mode": "leader",
+            "result": {
+              "status": "return",
+              "payload": "\"{\\\"declarations\\\": {}, \\\"eligible\\\": [], \\\"findings\\\": [], \\\"id\\\": \\\"hall-1793125584561\\\", \\\"members\\\": [\\\"0x63adea93f644c08dde9694ddd3e841f2ff696daf\\\", \\\"0x0655fbeb156877758da61d4972ff074185738e41\\\", \\\"0x0195d6c4009fdfa7e9bcfb8d22a59e10944ca07e\\\"], \\\"owner\\\": \\\"0x63adea93f644c08dde9694ddd3e841f2ff696daf\\\", \\\"proposal\\\": \\\"Appoint Cedar Workshop Ltd as the paid operator of the community maker hall for one year. The committee approves the service appointment only; no funds are transferred by this vote.\\\", \\\"protocol\\\": \\\"recuse-1\\\", \\\"status\\\": \\\"DISCLOSURES\\\", \\\"title\\\": \\\"Community workshop operator appointment\\\", \\\"votes\\\": {}}\""
+            }
+          },
+          {
+            "execution_result": "SUCCESS",
+            "vote": "agree",
+            "mode": "validator",
+            "result": {
+              "status": "return",
+              "payload": "\"{\\\"declarations\\\": {}, \\\"eligible\\\": [], \\\"findings\\\": [], \\\"id\\\": \\\"hall-1793125584561\\\", \\\"members\\\": [\\\"0x63adea93f644c08dde9694ddd3e841f2ff696daf\\\", \\\"0x0655fbeb156877758da61d4972ff074185738e41\\\", \\\"0x0195d6c4009fdfa7e9bcfb8d22a59e10944ca07e\\\"], \\\"owner\\\": \\\"0x63adea93f644c08dde9694ddd3e841f2ff696daf\\\", \\\"proposal\\\": \\\"Appoint Cedar Workshop Ltd as the paid operator of the community maker hall for one year. The committee approves the service appointment only; no funds are transferred by this vote.\\\", \\\"protocol\\\": \\\"recuse-1\\\", \\\"status\\\": \\\"DISCLOSURES\\\", \\\"title\\\": \\\"Community workshop operator appointment\\\", \\\"votes\\\": {}}\""
+            }
+          }
+        ],
+        "votes": {
+          "0x0eb3859451817bC25Cc717D4F676D54D0D3aD0aE": "agree",
+          "0x63d72fE364368491E62a42B9C73c317Ce1ca8434": "idle",
+          "0x9C182DE7F93AdbE8ee3D62570613eC23c5683cAc": "agree",
+          "0xb9ed1258763dfFC83356b15e8A20236B86E42ba2": "agree",
+          "0xcab45E3fe9cC9592B5C378E47734E022b7Df80c9": "idle"
+        }
+      },
+      "done": true
+    },
+    "03-incomplete-assessment-denied": {
+      "hash": "0x754fb9181309c84d4a0eb6b2af53e4a00c13f7f91b3aa9f254fa71ce7580b230",
+      "method": "assess",
+      "args": [
+        "0x63adea93f644c08dde9694ddd3e841f2ff696daf",
+        "hall-1793125584561"
+      ],
+      "signer": "0x0655fbeb156877758da61d4972ff074185738e41",
+      "receipt": {
+        "status": 7,
+        "statusName": "FINALIZED",
+        "result": 6,
+        "from": "0x0655FbEb156877758da61d4972fF074185738e41",
+        "to": "0x73130Df6Ee75273e0B3e7A2B59cE0950B18aF8DD",
+        "leaders": [
+          {
+            "execution_result": "ERROR",
+            "vote": null,
+            "mode": "leader",
+            "result": {
+              "raw": "AURFQ0xBUkFUSU9OU19JTkNPTVBMRVRFX09SX0xPQ0tFRA==",
+              "status": "rollback",
+              "payload": "DECLARATIONS_INCOMPLETE_OR_LOCKED"
+            }
+          },
+          {
+            "execution_result": "ERROR",
+            "vote": "agree",
+            "mode": "validator",
+            "result": {
+              "raw": "AURFQ0xBUkFUSU9OU19JTkNPTVBMRVRFX09SX0xPQ0tFRA==",
+              "status": "rollback",
+              "payload": "DECLARATIONS_INCOMPLETE_OR_LOCKED"
+            }
+          }
+        ],
+        "votes": {
+          "0x5e84e17266a193077728229751aC8A1dD24be146": "agree",
+          "0x63d72fE364368491E62a42B9C73c317Ce1ca8434": "agree",
+          "0xb04cdDC4a6Ff6A0aDF715cfe00Fa307b901cebD4": "idle",
+          "0xcab45E3fe9cC9592B5C378E47734E022b7Df80c9": "agree",
+          "0xe06A34A1eBd398AF3399d08593B8c3C433CdD947": "idle"
+        }
+      },
+      "done": true
+    },
+    "04-declaration-0": {
+      "hash": "0x7b03ca14fb25da326ad81b1db432d66e5b2c5226271c68b1fe13640707613193",
+      "method": "declare",
+      "args": [
+        "0x63adea93f644c08dde9694ddd3e841f2ff696daf",
+        "hall-1793125584561",
+        "I am the managing director and a shareholder of Cedar Workshop Ltd, the proposed paid operator. I would benefit financially from this appointment."
+      ],
+      "signer": "0x63adea93f644c08dde9694ddd3e841f2ff696daf",
+      "receipt": {
+        "status": 7,
+        "statusName": "FINALIZED",
+        "result": 6,
+        "from": "0x63aDEA93f644c08dDE9694DdD3E841F2Ff696dAF",
+        "to": "0x73130Df6Ee75273e0B3e7A2B59cE0950B18aF8DD",
+        "leaders": [
+          {
+            "execution_result": "SUCCESS",
+            "vote": null,
+            "mode": "leader",
+            "result": {
+              "status": "return",
+              "payload": "\"{\\\"declarations\\\": {\\\"0x63adea93f644c08dde9694ddd3e841f2ff696daf\\\": \\\"I am the managing director and a shareholder of Cedar Workshop Ltd, the proposed paid operator. I would benefit financially from this appointment.\\\"}, \\\"eligible\\\": [], \\\"findings\\\": [], \\\"id\\\": \\\"hall-1793125584561\\\", \\\"members\\\": [\\\"0x63adea93f644c08dde9694ddd3e841f2ff696daf\\\", \\\"0x0655fbeb156877758da61d4972ff074185738e41\\\", \\\"0x0195d6c4009fdfa7e9bcfb8d22a59e10944ca07e\\\"], \\\"owner\\\": \\\"0x63adea93f644c08dde9694ddd3e841f2ff696daf\\\", \\\"proposal\\\": \\\"Appoint Cedar Workshop Ltd as the paid operator of the community maker hall for one year. The committee approves the service appointment only; no funds are transferred by this vote.\\\", \\\"protocol\\\": \\\"recuse-1\\\", \\\"status\\\": \\\"DISCLOSURES\\\", \\\"title\\\": \\\"Community workshop operator appointment\\\", \\\"votes\\\": {}}\""
+            }
+          },
+          {
+            "execution_result": "SUCCESS",
+            "vote": "agree",
+            "mode": "validator",
+            "result": {
+              "status": "return",
+              "payload": "\"{\\\"declarations\\\": {\\\"0x63adea93f644c08dde9694ddd3e841f2ff696daf\\\": \\\"I am the managing director and a shareholder of Cedar Workshop Ltd, the proposed paid operator. I would benefit financially from this appointment.\\\"}, \\\"eligible\\\": [], \\\"findings\\\": [], \\\"id\\\": \\\"hall-1793125584561\\\", \\\"members\\\": [\\\"0x63adea93f644c08dde9694ddd3e841f2ff696daf\\\", \\\"0x0655fbeb156877758da61d4972ff074185738e41\\\", \\\"0x0195d6c4009fdfa7e9bcfb8d22a59e10944ca07e\\\"], \\\"owner\\\": \\\"0x63adea93f644c08dde9694ddd3e841f2ff696daf\\\", \\\"proposal\\\": \\\"Appoint Cedar Workshop Ltd as the paid operator of the community maker hall for one year. The committee approves the service appointment only; no funds are transferred by this vote.\\\", \\\"protocol\\\": \\\"recuse-1\\\", \\\"status\\\": \\\"DISCLOSURES\\\", \\\"title\\\": \\\"Community workshop operator appointment\\\", \\\"votes\\\": {}}\""
+            }
+          }
+        ],
+        "votes": {
+          "0x336458747913FE397be82c4F0926ACeB3ab13618": "agree",
+          "0x4441Ebe37E72c039B73f1D6CF8C6DEe277FE547a": "agree",
+          "0x4619C8420D50c9dE477DB2CBb7b4863A041688CB": "agree",
+          "0x63d72fE364368491E62a42B9C73c317Ce1ca8434": "agree",
+          "0xF7D08d12dB37D3e02D1833b5cB7e56B07F114186": "idle"
+        }
+      },
+      "done": true
+    },
+    "05-declaration-1": {
+      "hash": "0x016ca572fd42eb26f713b7290087c92a4b511cb238fc1ea4d0f549ae716c67cb",
+      "method": "declare",
+      "args": [
+        "0x63adea93f644c08dde9694ddd3e841f2ff696daf",
+        "hall-1793125584561",
+        "I have no financial, employment, ownership, close family or competing business interests related to Cedar Workshop Ltd or this appointment."
+      ],
+      "signer": "0x0655fbeb156877758da61d4972ff074185738e41",
+      "receipt": {
+        "status": 7,
+        "statusName": "FINALIZED",
+        "result": 6,
+        "from": "0x0655FbEb156877758da61d4972fF074185738e41",
+        "to": "0x73130Df6Ee75273e0B3e7A2B59cE0950B18aF8DD",
+        "leaders": [
+          {
+            "execution_result": "SUCCESS",
+            "vote": null,
+            "mode": "leader",
+            "result": {
+              "status": "return",
+              "payload": "\"{\\\"declarations\\\": {\\\"0x0655fbeb156877758da61d4972ff074185738e41\\\": \\\"I have no financial, employment, ownership, close family or competing business interests related to Cedar Workshop Ltd or this appointment.\\\", \\\"0x63adea93f644c08dde9694ddd3e841f2ff696daf\\\": \\\"I am the managing director and a shareholder of Cedar Workshop Ltd, the proposed paid operator. I would benefit financially from this appointment.\\\"}, \\\"eligible\\\": [], \\\"findings\\\": [], \\\"id\\\": \\\"hall-1793125584561\\\", \\\"members\\\": [\\\"0x63adea93f644c08dde9694ddd3e841f2ff696daf\\\", \\\"0x0655fbeb156877758da61d4972ff074185738e41\\\", \\\"0x0195d6c4009fdfa7e9bcfb8d22a59e10944ca07e\\\"], \\\"owner\\\": \\\"0x63adea93f644c08dde9694ddd3e841f2ff696daf\\\", \\\"proposal\\\": \\\"Appoint Cedar Workshop Ltd as the paid operator of the community maker hall for one year. The committee approves the service appointment only; no funds are transferred by this vote.\\\", \\\"protocol\\\": \\\"recuse-1\\\", \\\"status\\\": \\\"DISCLOSURES\\\", \\\"title\\\": \\\"Community workshop operator appointment\\\", \\\"votes\\\": {}}\""
+            }
+          },
+          {
+            "execution_result": "SUCCESS",
+            "vote": "agree",
+            "mode": "validator",
+            "result": {
+              "status": "return",
+              "payload": "\"{\\\"declarations\\\": {\\\"0x0655fbeb156877758da61d4972ff074185738e41\\\": \\\"I have no financial, employment, ownership, close family or competing business interests related to Cedar Workshop Ltd or this appointment.\\\", \\\"0x63adea93f644c08dde9694ddd3e841f2ff696daf\\\": \\\"I am the managing director and a shareholder of Cedar Workshop Ltd, the proposed paid operator. I would benefit financially from this appointment.\\\"}, \\\"eligible\\\": [], \\\"findings\\\": [], \\\"id\\\": \\\"hall-1793125584561\\\", \\\"members\\\": [\\\"0x63adea93f644c08dde9694ddd3e841f2ff696daf\\\", \\\"0x0655fbeb156877758da61d4972ff074185738e41\\\", \\\"0x0195d6c4009fdfa7e9bcfb8d22a59e10944ca07e\\\"], \\\"owner\\\": \\\"0x63adea93f644c08dde9694ddd3e841f2ff696daf\\\", \\\"proposal\\\": \\\"Appoint Cedar Workshop Ltd as the paid operator of the community maker hall for one year. The committee approves the service appointment only; no funds are transferred by this vote.\\\", \\\"protocol\\\": \\\"recuse-1\\\", \\\"status\\\": \\\"DISCLOSURES\\\", \\\"title\\\": \\\"Community workshop operator appointment\\\", \\\"votes\\\": {}}\""
+            }
+          }
+        ],
+        "votes": {
+          "0x045291B293B9D68969c18B6637A8258038cf787A": "agree",
+          "0x0eb3859451817bC25Cc717D4F676D54D0D3aD0aE": "agree",
+          "0x378aED3bA912Ce77C3C66155961A7e61C2fE8F3B": "agree",
+          "0xF7D08d12dB37D3e02D1833b5cB7e56B07F114186": "agree",
+          "0xe06A34A1eBd398AF3399d08593B8c3C433CdD947": "agree"
+        }
+      },
+      "done": true
+    },
+    "06-declaration-2": {
+      "hash": "0x6542791cf7ae83585ad8cade28079ecbedaf8f394b5bd00a78071b73aeb3cf5c",
+      "method": "declare",
+      "args": [
+        "0x63adea93f644c08dde9694ddd3e841f2ff696daf",
+        "hall-1793125584561",
+        "I have no financial, employment, ownership, close family or competing business interests related to Cedar Workshop Ltd or this appointment."
+      ],
+      "signer": "0x0195d6c4009fdfa7e9bcfb8d22a59e10944ca07e",
+      "receipt": {
+        "status": 7,
+        "statusName": "FINALIZED",
+        "result": 6,
+        "from": "0x0195D6c4009fdFA7E9bCfB8d22a59e10944cA07E",
+        "to": "0x73130Df6Ee75273e0B3e7A2B59cE0950B18aF8DD",
+        "leaders": [
+          {
+            "execution_result": "SUCCESS",
+            "vote": null,
+            "mode": "leader",
+            "result": {
+              "status": "return",
+              "payload": "\"{\\\"declarations\\\": {\\\"0x0195d6c4009fdfa7e9bcfb8d22a59e10944ca07e\\\": \\\"I have no financial, employment, ownership, close family or competing business interests related to Cedar Workshop Ltd or this appointment.\\\", \\\"0x0655fbeb156877758da61d4972ff074185738e41\\\": \\\"I have no financial, employment, ownership, close family or competing business interests related to Cedar Workshop Ltd or this appointment.\\\", \\\"0x63adea93f644c08dde9694ddd3e841f2ff696daf\\\": \\\"I am the managing director and a shareholder of Cedar Workshop Ltd, the proposed paid operator. I would benefit financially from this appointment.\\\"}, \\\"eligible\\\": [], \\\"findings\\\": [], \\\"id\\\": \\\"hall-1793125584561\\\", \\\"members\\\": [\\\"0x63adea93f644c08dde9694ddd3e841f2ff696daf\\\", \\\"0x0655fbeb156877758da61d4972ff074185738e41\\\", \\\"0x0195d6c4009fdfa7e9bcfb8d22a59e10944ca07e\\\"], \\\"owner\\\": \\\"0x63adea93f644c08dde9694ddd3e841f2ff696daf\\\", \\\"proposal\\\": \\\"Appoint Cedar Workshop Ltd as the paid operator of the community maker hall for one year. The committee approves the service appointment only; no funds are transferred by this vote.\\\", \\\"protocol\\\": \\\"recuse-1\\\", \\\"status\\\": \\\"DISCLOSURES\\\", \\\"title\\\": \\\"Community workshop operator appointment\\\", \\\"votes\\\": {}}\""
+            }
+          },
+          {
+            "execution_result": "SUCCESS",
+            "vote": "agree",
+            "mode": "validator",
+            "result": {
+              "status": "return",
+              "payload": "\"{\\\"declarations\\\": {\\\"0x0195d6c4009fdfa7e9bcfb8d22a59e10944ca07e\\\": \\\"I have no financial, employment, ownership, close family or competing business interests related to Cedar Workshop Ltd or this appointment.\\\", \\\"0x0655fbeb156877758da61d4972ff074185738e41\\\": \\\"I have no financial, employment, ownership, close family or competing business interests related to Cedar Workshop Ltd or this appointment.\\\", \\\"0x63adea93f644c08dde9694ddd3e841f2ff696daf\\\": \\\"I am the managing director and a shareholder of Cedar Workshop Ltd, the proposed paid operator. I would benefit financially from this appointment.\\\"}, \\\"eligible\\\": [], \\\"findings\\\": [], \\\"id\\\": \\\"hall-1793125584561\\\", \\\"members\\\": [\\\"0x63adea93f644c08dde9694ddd3e841f2ff696daf\\\", \\\"0x0655fbeb156877758da61d4972ff074185738e41\\\", \\\"0x0195d6c4009fdfa7e9bcfb8d22a59e10944ca07e\\\"], \\\"owner\\\": \\\"0x63adea93f644c08dde9694ddd3e841f2ff696daf\\\", \\\"proposal\\\": \\\"Appoint Cedar Workshop Ltd as the paid operator of the community maker hall for one year. The committee approves the service appointment only; no funds are transferred by this vote.\\\", \\\"protocol\\\": \\\"recuse-1\\\", \\\"status\\\": \\\"DISCLOSURES\\\", \\\"title\\\": \\\"Community workshop operator appointment\\\", \\\"votes\\\": {}}\""
+            }
+          }
+        ],
+        "votes": {
+          "0x007d6451555Df7765c707284F844137927aE4e5E": "agree",
+          "0x045291B293B9D68969c18B6637A8258038cf787A": "agree",
+          "0x0eb3859451817bC25Cc717D4F676D54D0D3aD0aE": "agree",
+          "0x336458747913FE397be82c4F0926ACeB3ab13618": "agree",
+          "0x63d72fE364368491E62a42B9C73c317Ce1ca8434": "agree"
+        }
+      },
+      "done": true
+    },
+    "07-duplicate-declaration-denied": {
+      "hash": "0x5d47f9640e5dfe8386d8cbb88c8730cb532bb592dac5057e245edc44649a04ff",
+      "method": "declare",
+      "args": [
+        "0x63adea93f644c08dde9694ddd3e841f2ff696daf",
+        "hall-1793125584561",
+        "I have no financial, employment, ownership, close family or competing business interests related to Cedar Workshop Ltd or this appointment."
+      ],
+      "signer": "0x0655fbeb156877758da61d4972ff074185738e41",
+      "receipt": {
+        "status": 7,
+        "statusName": "FINALIZED",
+        "result": 6,
+        "from": "0x0655FbEb156877758da61d4972fF074185738e41",
+        "to": "0x73130Df6Ee75273e0B3e7A2B59cE0950B18aF8DD",
+        "leaders": [
+          {
+            "execution_result": "ERROR",
+            "vote": null,
+            "mode": "leader",
+            "result": {
+              "raw": "AUFMUkVBRFlfREVDTEFSRUQ=",
+              "status": "rollback",
+              "payload": "ALREADY_DECLARED"
+            }
+          },
+          {
+            "execution_result": "ERROR",
+            "vote": "idle",
+            "mode": "validator",
+            "result": {
+              "raw": "AmlkbGU=",
+              "status": "contract_error",
+              "payload": "idle"
+            }
+          }
+        ],
+        "votes": {
+          "0x0eb3859451817bC25Cc717D4F676D54D0D3aD0aE": "agree",
+          "0x4619C8420D50c9dE477DB2CBb7b4863A041688CB": "idle",
+          "0x5847AF34a4e5bA96490f8c883598f68EC9B0B907": "agree",
+          "0x9C182DE7F93AdbE8ee3D62570613eC23c5683cAc": "agree",
+          "0xe06A34A1eBd398AF3399d08593B8c3C433CdD947": "idle"
+        }
+      },
+      "done": true
+    },
+    "08-consensus-assessment": {
+      "hash": "0xacd677f030c9ebbafdfcca354b4ce62a9f3a9cebe17e442ff2175ac8dad1ab75",
+      "method": "assess",
+      "args": [
+        "0x63adea93f644c08dde9694ddd3e841f2ff696daf",
+        "hall-1793125584561"
+      ],
+      "signer": "0x0195d6c4009fdfa7e9bcfb8d22a59e10944ca07e",
+      "receipt": {
+        "status": 7,
+        "statusName": "FINALIZED",
+        "result": 7,
+        "from": "0x0195D6c4009fdFA7E9bCfB8d22a59e10944cA07E",
+        "to": "0x73130Df6Ee75273e0B3e7A2B59cE0950B18aF8DD",
+        "leaders": [
+          {
+            "execution_result": "ERROR",
+            "vote": null,
+            "mode": "leader",
+            "result": {
+              "raw": "AUlOVkFMSURfTUFUUklY",
+              "status": "rollback",
+              "payload": "INVALID_MATRIX"
+            }
+          },
+          {
+            "execution_result": "ERROR",
+            "vote": "disagree",
+            "mode": "validator",
+            "result": {
+              "raw": "AUlOVkFMSURfTUFUUklY",
+              "status": "rollback",
+              "payload": "INVALID_MATRIX"
+            }
+          }
+        ],
+        "votes": {
+          "0x007d6451555Df7765c707284F844137927aE4e5E": "disagree",
+          "0x378aED3bA912Ce77C3C66155961A7e61C2fE8F3B": "idle",
+          "0x4441Ebe37E72c039B73f1D6CF8C6DEe277FE547a": "idle",
+          "0x4619C8420D50c9dE477DB2CBb7b4863A041688CB": "disagree",
+          "0x9C182DE7F93AdbE8ee3D62570613eC23c5683cAc": "disagree"
+        }
+      }
+    }
+  },
+  "record": null,
+  "error": "08-consensus-assessment did not return successful agreeing execution"
+}
